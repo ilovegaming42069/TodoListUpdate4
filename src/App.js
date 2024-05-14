@@ -65,7 +65,7 @@ function App() {
       if (response.ok) {
         const newTodo = await response.json();
         setListTodo(prev => [...prev, newTodo]);
-        console.log('Item added via FastAPI');
+        console.log('Item added via FastAPI:', newTodo);
       } else {
         const message = await response.text();
         console.error('Failed to add item via FastAPI:', message);
@@ -123,7 +123,10 @@ function App() {
           method: 'DELETE'
         });
       }
-      setListTodo(prev => prev.filter(item => filter === 'all' || item.status !== filter));
+      setListTodo(prev => prev.filter(item => filter !== 'all' && item.status !== filter));
+      if (filter === 'all') {
+        setListTodo([]);
+      }
       console.log('Todos cleared via FastAPI');
     } catch (error) {
       console.error('Error clearing todos via FastAPI:', error);
@@ -175,3 +178,4 @@ function App() {
 }
 
 export default App;
+

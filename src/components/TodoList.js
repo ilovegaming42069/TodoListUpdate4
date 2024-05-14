@@ -1,7 +1,7 @@
 import React from 'react';
 import { statusSlugToDisplayName } from './StatusMapping'; // Assuming StatusMapping.js is in the same directory
 
-function Todolist({ id, item, status, deleteItem, updateStatus }) {
+function TodoList({ id, item, status, deleteItem, updateStatus }) {
   const formatStatus = (status) => {
     // Using the mapping object to get the display name of the status
     return statusSlugToDisplayName[status];
@@ -27,4 +27,4 @@ function Todolist({ id, item, status, deleteItem, updateStatus }) {
   );
 }
 
-export default Todolist;
+export default TodoList;
